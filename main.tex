@@ -1,0 +1,224 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+
+\title{MATH 350 PSET 1}
+\author{Jeffrey Ma}
+\date{September 11th 2020}
+
+\begin{document}
+
+\maketitle
+
+\section{DF 0.2 Exercise 10}
+
+Prove for any positive integer N, there exist only finitely many integers n such that $\varphi(n)=N$. Conclude that ${\varphi(n)\to\infty}$ as ${n\to\infty}$.
+
+\begin{proof}
+
+If $n = p_1^{a_1}p_2^{a_2}...p_s^{a_s}$ then $N = p_1^{a_1-1}(p_1-1)
+...p_s^{a_s-1}(p_s-1)$. This will be proved at the end. We know that any integer $n$ can be decomposed as above into the product of distinct primes with positive integers $a_1, a_2,...,a_n$. 
+
+Observe that for $1 \leq i \leq s$, $p_i^{\alpha_i-1}(p_i - 1) \leq N \Rightarrow p_i^{\alpha_i} \leq \frac{Np_i}{p_i - 1}$. Note that $p_i/(p_i - 1) \leq 2$ (proved later). Thus, $p_i^{\alpha_i} \leq 2N$. Taken with the formula for $
+n$ we can deduce that $n \leq (2N)^s$. We know that $N$ is a finite positive integer by definition. We also know that $s$ must be finite because if it were infinite, then there would be an infinite number of factors $p_i^{\alpha_i-1}(p_i - 1)$ that compose $N$, which would make $N$ infinite which we know is false. Thus, the upper bound $(2N)^s$ is finite.
+
+Because there is a finite upper bound on $n$, a positive integer, there are only a finite number of possibilities for $n$ ($\leq (2N)^s$).
+
+Prove as ${n\to\infty}$, ${\varphi(n)\to\infty}$ by contradiction. Assume that as ${n\to\infty}$, ${\varphi(n)\not\to\infty}$. If $\varphi(n)$ is finite and $n = p_1^{a_1}p_2^{a_2}...p_s^{a_s}$, then $\varphi(n)$ can be written as $p_1^{a_1-1}(p_1-1)...p_s^{a_s-1}(p_s-1)$ where $p_i, \alpha_i, s$ are finite. If any of them are infinite, then $\varphi(n)$ would have to be infinite. Since $n = p_1^{a_1}p_2^{a_2}...p_s^{a_s}$ and $p_i, \alpha_i, s$, are finite, then $n$ must be finite. But that is a contradiction because we assume that ${n\to\infty}$.
+
+\paragraph{Subproof 1}
+For primes $p$, $\varphi(p) = p - 1$ because all the integers smaller than $p$ have no factors in common with $p$. More generally, $\varphi(p^\alpha) = p^\alpha - p^{\alpha - 1} = p^{\alpha - 1}(p - 1)$ because there are only $p^{\alpha - 1}$ integers smaller than $p$ that have factors in common with $p$. We know that $\varphi$ is multiplicative s.t. $\varphi(a)\varphi(b)=\varphi(ab)$. Thus, if $n = p_1^{\alpha_1}...p_s^{\alpha_s}$, we have $\varphi(p_1^{\alpha_1})...\varphi(p_s^{\alpha_s}) = p_1^{\alpha_1 - 1}(p_1 - 1)...p_s^{\alpha_s - 1}(p_s - 1)$.
+
+\paragraph{Subproof 2}
+Prove $\frac{x}{x-1} \leq 2$. Use induction. Base case: $\frac{2}{2-1} = 2 \leq 2$. Inductive hypothesis: $\frac{n}{n-1} \leq 2$. Inductive step: Prove for $\frac{n+1}{n+1-1} = \frac{n+1}{n}$.
+\[
+\frac{n}{n-1} \cdot \frac{n^2-1}{n^2} \leq 2 \cdot \frac{n^2-1}{n^2}
+\]
+\[
+\frac{n+1}{n} \leq 2 \cdot \frac{n^2-1}{n^2}
+\]
+Observe that $\frac{n^2-1}{n^2} \leq 1$. Thus,
+\[
+\frac{n+1}{n} \leq 2
+\]
+
+\end{proof}
+
+\section{DF 0.3 Exercise 13}
+
+Let $n \in \mathbb{Z}, n>1$. Let $a \in \mathbb{Z}$ with $1 \leq a \leq n$. Prove that if $a$ and $n$ are relatively prime, there exists an integer $c$ s.t. $ac \equiv 1$ (mod n).
+
+\begin{proof}
+We know that the GCD of two integers is a $\mathbb{Z}$-linear combination of the integers.
+\[ (a, n) = 1 = ax + ny \quad \textrm{with} \quad x,y \in \mathbb{Z} \]
+Observe that $ax + ny \equiv 1$ (mod n) follows from that equation. Thus, $ax \equiv 1$ (mod n) because the multiple of $n$ disappears since you are in (mod n). 
+Thus, there exists an integer $c$ s.t. $ac \equiv 1$ (mod n).
+\end{proof}
+
+\section{DF 1.1 Exercise 15}
+Prove that $(a_1a_2...a_n)^{-1} = a_n^{-1}a_{n-1}^{-1}...a_1^{-1}$ for all $a_1,...a_n \in G$
+\begin{proof}
+\[
+(a_1a_2...a_n)^{-1}(a_1a_2...a_n) = 1 \quad \textrm{by definition of the inverse.}
+\]
+\[
+(a_1a_2...a_n)^{-1}(a_1a_2...a_n)a_n^{-1} = a_n^{-1}
+\]
+\[
+(a_1a_2...a_n)^{-1}(a_1a_2...a_{n-1})(a_n a_n^{-1}) = a_n^{-1} \quad \textrm{by generalized associative law.}
+\]
+\[
+(a_1a_2...a_n)^{-1}(a_1a_2...a_{n-1}) = a_n^{-1}
+\]
+Because $a_1, a_2, ... a_n \in G$, they each have an inverse so we can repeat this process above for $a_1, a_2, ...a_n$ by iteratively multiplying the respective inverse on the right.
+After n steps, we end with
+\[
+(a_1a_2...a_n)^{-1} = a_n^{-1}a_{n-1}^{-1}...a_1^{-1}
+\]
+\end{proof}
+
+\section{DF 1.1 Exercise 22}
+If x and g are elements of group G, prove that $|x| = |g^{-1}xg|$. Deduce that $|ab|=|ba|$ for all $ a, b \in G$.
+\begin{proof}
+Split into two cases: $|x| \neq \infty$ and $|x| = \infty$.
+\paragraph{Case 1} $|x| \neq \infty$.
+
+Let $|x|=n$. $\Rightarrow x^n = 1$
+\[
+(g^{-1}xg)^n = g^{-1}xg g^{-1}xg ... g^{-1}xg = g^{-1}x^ng
+\]
+
+Since $x^n = 1$, $g^{-1}x^n g = g^{-1}g = 1$.
+Thus $(g^{-1}x g)^n = 1$.
+
+Observe that n is the smallest possible integer for this to happen because it is the smallest possible integer for which $x^n = 1$, which is the necessary condition for the left most $g^{-1}$ to cancel with the right most $g$ (e.g. For any $a<n$, we get $(g^{-1}x g)^a = g^{-1}x^a g \neq 1)$. This is because $(g^{-1}x g)^a = 1 \Rightarrow x^a = g g^{-1} = 1$, which we know is false since $|x| = n$.
+
+\paragraph{Case 2} $|x| = \infty$
+
+Prove by contradiction. Assume $|g^{-1}x g| = n$ s.t. $n \neq \infty$ and assume that $|x| = \infty$.
+\[
+(g^{-1}x g)^n = 1 \Rightarrow g^{-1}x g g^{-1}x g ... g^{-1}x g = 1
+\]
+\[
+\Rightarrow g^{-1}x^n g = 1 \Rightarrow x^n = g g^{-1}
+\]
+\[
+\Rightarrow |x|=n \Rightarrow \textrm{contradiction}
+\]
+
+Thus, if $|x|=\infty$, then $|g^{-1}x g| = \infty$.
+
+Using this fact that $|x|=|g^{-1}x g|$, we can deduce that
+\[
+|ab| = |a^{-1}aba| =|ba|
+\]
+by using $x=ab$ and $g=a$.
+
+\end{proof}
+
+\section{DF 1.1 Exercise 25}
+Prove that if $x^2=1$ for all $x \in G$, then G is abelian.
+\begin{proof}
+Let $a, b \in G$. $\Rightarrow ab \in G$ by definition of group operation. $\Rightarrow (ab)^2 = 1$ by definition of this group. $\Rightarrow abab=1 \Rightarrow ababb=b \Rightarrow aba= b$ because $bb=b^2=1$. $\Rightarrow aaba=ab \Rightarrow ba = ab$ because $aa=a^2=1$. Thus, G is abelian.
+\end{proof}
+
+\section{DF 1.2 Exercise 3}
+\[
+D_{2n} = \langle r, s | r^n = s^2 = 1, rs = sr^{-1} \rangle
+\]
+Show that every element of $D_{2n}$ which is not a power of $r$ has order 2. Deduce that $D_{2n}$ is generated by the two elements $s$ and $sr$, both of which have order 2.
+\begin{proof}
+Elements of $D_{2n}$ that are not powers of $r$ can be written as $sr^a$ where $0 \leq a \leq n-1$.
+\[
+sr^a sr^a = s \cdot sr^{-a} \cdot r^a = s^2 r^{-a+a} = 1
+\] because $r^i s = sr^{-i}$ (for the first equality). This fact can be proven by induction. Base case is $rs=sr^{-1}$, which is a defined relation. Assume that $r^is=sr^{-i}$. Then $r^{i+1}s=rr^is=rsr^{-i}=sr^{-1}r^{-i}=sr^{-i-1}$. Thus, for all $0 \leq i \leq n$, $r^i = sr^{-i}$.
+
+Thus, we have shown that for all elements of $D_{2n}$ that are not powers of $r$, written as $sr^a$, have order 2.
+
+$D_{2n}$ is generated by $s$ and $sr$ because $s \cdot sr = r$ and we know that $s$ and $r$ can generate $D_2n$. $s$ is order 2, since $s^2=1$ is a defined relation. $sr$ is order 2, since $sr \cdot sr = ssr^{-1}r=1$.
+\end{proof}
+
+\section{DF 1.2 Exercise 7}
+Show that $\langle a, b | a^2 = b^2 = (ab)^n = 1 \rangle$ gives a presentation for $D_{2n}$ in terms of generators $a=s$ and $b=sr$ of order 2.
+\begin{proof}
+\[
+D_{2n} = \langle r, s | r^n = s^2 = 1, rs = sr^{-1} \rangle
+\]
+
+First, show that the relations of $r$ and $s$ follow from those of $a$ and $b$.
+\[
+a^2 = 1 \Rightarrow s^2 = 1
+\]
+\[
+(ab)^n = 1 \Rightarrow (ssr)^n = 1 \Rightarrow (s^2r)^n = 1 \Rightarrow r^n = 1
+\]
+Observe that $aba = ssrs = rs$.
+\[
+sr^{-1} = a(ab)^{-1} = ab^{-1}a^{-1} = aba = rs
+\]
+Note that the second to last equality comes from the fact that $a^2=b^2=1 \Rightarrow a = a^{-1}$ and $b=b^{-1}$.
+Thus, the relations of $r$ and $s$ follow from those of $a$ and $b$.
+Next, show that the relations of $a$ and $b$ follow from those of $r$ and $s$. Recall that $s=a$ and $sr=b$.
+\[s^2 = 1 \Rightarrow a^2 = 1\]
+\[sr \cdot sr = s \cdot sr^{-1} \cdot r = s^2 = 1 \Rightarrow b^2 = 1\]
+\[(s \cdot sr)^n = (s^2 r)^n = r^n = 1 \Rightarrow (ab)^n = 1 \]
+Thus, the relations of $a$ and $b$ follow from those of $r$ and $s$.
+\end{proof}
+
+\section{DF 1.3 Exercise 15}
+Prove that the order of an element in $S_n$ equals the LCM of the lengths of the cycles in its cycle decomposition.
+\begin{proof}
+Any element of $S_n$ can be written as a product of disjoint cycles. Let $a \in S_n$ s.t. $a=c_1c_2...c_k$ where $c_1, c_2, ... c_k$ are disjoint cycles. Let $|a| = m \Rightarrow a^m = 1$.
+\[\Rightarrow (c_1c_2...c_k)^m = 1 \Rightarrow c_1^m c_2^m ... c_k^m = 1\]
+Claim: $c_i^m = 1$ for $1 \leq i \leq k$ (proved later).
+
+Recall that the order of a cycle is the length of the cycle. Thus, $|c_i|=l_i$ where $l_i$ is the length of $c_i$. Because $c_i^m=1$, $m$ must be a multiple of $l_i$ (or $l_i|m$).
+Let $l$ be the LCM of $l_i$ for $1 \leq i \leq k$. Because each $l_i$ divides $m$, $l|m$ by property of LCM.
+
+From the definition of order, we want the smallest $m$ s.t. $l|m$ because $c_i^l=1$ for all $c_i$. Thus, $m=l$. 
+
+\paragraph{Subproof 1}
+Assume that $c_1^m c_2^m ... c_k^m = 1$. Note that for a given $c_i$, there is no $c_j$ where $i \neq j$ and $1 \leq j \leq k$ s.t. $c_i c_j = 1$. This is because $c_i, c_j$ are disjoint cycles, so one has no effect on the other. Thus, if $c_i^m \neq 1$ for any $c_i$, then $c_1^m c_2^m ... c_k^m \neq 1$, which is a contradiction.
+\end{proof}
+
+\section{HP1}
+\paragraph{a)}
+How many elements of $S_7$ have a cycle decomposition that is a 4-cycle?
+\begin{proof}
+There are 7!/3! ways to fill the 4 spots in the 4-cycle. Observe that the cycles (abcd), (bcda), (cdab), and (dabc) are the same (e.g. there are 4 ways to order each 4-cycle without creating another cycle). Thus, to avoid over counting we want to divide by 4. Thus, there are 7!/4! elements in $S_7$ that have a 4-cycle decomposition.
+\end{proof}
+\paragraph{b)}
+How many elements of $S_7$ have a cycle decomposition that is a product of a 2-cycle and a 4-cycle?
+\begin{proof}
+There are 7! ways to fill the 2-cycle and the 4-cycle. We must divide by 4 to avoid over counting with respect to the 4-cycle (as shown in part a). We must divide by 2 to avoid over counting with respect to the 2-cycle because $(ab)=(ba)$. Thus, there are 7!/8 such elements in $S_7$.
+\end{proof}
+
+\section{HP2}
+Show that every element of $S_n$ can be written as a product of 2-cycles.
+\begin{proof}
+Every element of $S_n$ has a cycle decomposition.
+\paragraph{Case 1}
+A cycle in the decomposition is of length 1. You can drop this cycle, so it does not affect the result of the proof.
+\paragraph{Case 2}
+A cycle in the decomposition is of length 2. This will stay the same.
+\paragraph{Case 3}
+A cycle in the decomposition is of length greater than 2 (e.g. $(a_1...a_n)$ s.t. $n > 2$). Prove this can be written as a product of 2-cycles using induction.
+
+Base case: $(a_1, a_2)$ can be written as a product of 2-cycles as is. Observe the pattern when $n=3$ we have $(a_1, a_2, a_3) = (a_1,a_2)(a_2,a_3)$ and for $n=4$ we have $(a_1, a_2, a_3, a_4) = (a_1,a_2)(a_2,a_3)(a_3, a_4)$
+
+Inductive hypothesis: Assume $(a_1,...,a_n)$ can be written as a product of 2-cycles as $(a_1, a_2)...(a_{n-1}, a_n)$. 
+
+Inductive step: To go from $a_n$ to $a_{n+1}$ simply append $(a_n, a_{n+1})$ to get $(a_1, a_2)...(a_{n-1}, a_n)$ $(a_n, a_{n+1})$ so that $a_n \mapsto a_{n+1}$ and $a_{n+1} \mapsto a_1$. We know the rest of it works from the inductive hypothesis. 
+Note that this product really does hold because it is the same map as $(a_1,a_2,...,a_n, a_{n+1})$ because $a_1 \mapsto a_2, a_n \mapsto a_{n+1}, a_{n+1} \mapsto a_n \mapsto a_{n-1} \mapsto ... \mapsto a_1$. 
+
+Thus, every element in $S_n$ can be written as a product of 2-cycles.
+
+\end{proof}
+
+\section{Part 2}
+\paragraph{1.}
+The topic that made the most sense to me was symmetric groups and cycle decompositions. This is because we studied permutations in this way in the discrete math class that I had taken. The idea of writing functions like this seems like a clever way to specify the function without having to write out each step.
+\paragraph{2.}
+The topic that made the least to me was group presentations. This is because I am not sure how group presentations allow you to find all the elements of the group or if there is a systematic way to do so if you have the generators and relations. I also am not sure if relations help you find the other elements in the group or just allow you to define all possible relations between elements in the group. So far, I have tried to read the textbook carefully to understand generators and relations. I will read the example group presentations in the book more carefully, attempted suggested problems from the reading, and also go to office hours to find out more.
+\end{document}
