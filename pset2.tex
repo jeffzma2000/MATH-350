@@ -19,7 +19,7 @@ $|x| \neq \infty$
 \newline
 \indent Let $|x|=n \Rightarrow x^n = 1$.
 $\varphi(x)^n=\varphi(x^n)=\varphi(1)=1$.
-$\varphi(1)=1$ because by the definition of homomorphism $\varphi(1) \cdot \varphi(1)=\varphi(1 \cdot 1) = \varphi(1)$. By cancellation law, $\varphi(1) = 1$.
+$\varphi(1)=1$ by property of homomorphism.
 \newline
 \indent Now I wish to show that $n$ is the smallest integer for which $\varphi(x)^n = 1$. Assume that there is $d \in \mathbb{Z}$ s.t. $d \leq n, \varphi(x)^d = 1$.
 \[
@@ -34,11 +34,11 @@ $|x| = \infty$
 \[
 \varphi(x)^n = \varphi(x^n) = 1
 \]
-As we have shown above, because $\varphi$ is injective, $\varphi(x)^n=1 \Rightarrow x^n=1$. This means that $x$ has a finite order $d \in \mathbb{Z}$ s.t. $dk=n$ where $k \in \mathbb{Z}$. This is a contradiction because we assume that $|x|=\infty$. Thus, $|\varphi(x)|=\infty$.
+Because $\varphi$ is a homomorphism, $\varphi(x^n)=1 \Rightarrow x^n=1$. This means that $x$ has a finite order $d \in \mathbb{Z}$ s.t. $dk=n$ where $k \in \mathbb{Z}$. This is a contradiction because we assume that $|x|=\infty$. Thus, $|\varphi(x)|=\infty$.
 
-Now I wish to show that any two isomorphic groups have the same number of elements of order $n$ for each $n \in \mathbb{Z}^+$. Prove by induction. Let $G, H$ be isomorphic groups with isomorphism $\varphi$. Assume that $G$ has $a_1$ elements with order 1, $a_2$ elements with order 2, and so on. Since $G, H$ are isomorphic, each element with order 1 in G gets mapped to a unique element with order 1 in H. Thus, $G$ and $H$ have the same number of elements of order 1, providing a base case. Assume that $G, H$ have the same number of elements of order up to $n$. If $G$ has $a_{n+1}$ elements of order $n+1$, then because of the bijection between $G$ and $H$, each of those elements gets mapped to a unique element in $H$ with order $n+1$. Observe that there are only $a_{n+1}$ elements in $H$ of order $n+1$ because for the elements with order $1,...,n$ in $G$, they are all mapped to elements in $H$ of the same order, so none of them will have order $n+1$ in $H$.
+Now I wish to show that any two isomorphic groups have the same number of elements of order $n$ for each $n \in \mathbb{Z}^+$. Prove by induction. Let $G, H$ be isomorphic groups with isomorphism $\varphi$. Assume that $G$ has $a_1$ elements with order 1, $a_2$ elements with order 2, and so on. Since $G, H$ are isomorphic, each element with order 1 in G gets mapped to a unique element with order 1 in H. And H has no more elements with order 1 because each element with order 1 must have a preimage in G with order 1. Thus, $G$ and $H$ have the same number of elements of order 1, providing a base case. Assume that $G, H$ have the same number of elements of order up to $n$. If $G$ has $a_{n+1}$ elements of order $n+1$, then because of the bijection between $G$ and $H$, each of those elements gets mapped to a unique element in $H$ with order $n+1$. Observe that there are only $a_{n+1}$ elements in $H$ of order $n+1$ because for the elements with order $1,...,n$ in $G$, they are all mapped to elements in $H$ of the same order, so none of them will have order $n+1$ in $H$. Similarly H does not have more elements of order $n+1$ because all the elements in H with order $n+1$ have a preimage with order $n+1$ in G because of the bijection.
 
-Observe that this result is not true if $\varphi$ is only assumed to be a homomorphism because there is no bijection between the two groups. Thus, you can not guarantee that $\varphi(x^d) = 1 \Rightarrow x^d = 1$ since more than one element can map to the identity, which was necessary for the proof above. A counterexample to demonstrate this is that $S_4$ and $S_5$ have different number of elements with order 2. This is because in $S_4$ there are ${5 \choose 2}$ 2-cycles and in $S_4$ there are ${4 \choose 2}$ 2-cycles. Note that only 2-cycles have order 2 because the order is the LCM of product of disjoint cycles.
+Observe that this result is not true if $\varphi$ is only assumed to be a homomorphism because there is no bijection between the two groups. Thus, you can not guarantee that $\varphi(x^d) = 1 \Rightarrow x^d = 1$ since more than one element can map to the identity, which was necessary for the proof above. Also, if the map was injective only, you would have more elements of a certain order in H than in G (and vice versa for surjective only). A counterexample to demonstrate this is that $S_4$ and $S_5$ have different number of elements with order 2. This is because in $S_4$ there are ${5 \choose 2}$ 2-cycles and in $S_4$ there are ${4 \choose 2}$ 2-cycles. Note that only 2-cycles have order 2 because the order is the LCM of product of disjoint cycles.
 \end{proof}
 
 \section{DF 1.6 Exercise 14}
@@ -47,10 +47,7 @@ Let $G, H$ be groups and $\varphi: G \rightarrow H$ be a homomorphism. Let $k$ b
 
 The kernel is non-empty since $1_G$ is in the kernel.
 \[
-\varphi(1_G \cdot 1_G) = \varphi(1_G) \cdot \varphi(1_G) \quad \textrm{because of homomorphism}
-\]
-\[
-\varphi(1_G) = 1_H \quad \textrm{by cancellation law}
+\varphi(1_G) = 1_H \quad \textrm{by property of homomorphism}
 \]
 The product is closed within the kernel. Let $a, b \in k$.
 \[
@@ -70,13 +67,7 @@ Thus, if $a, b \in k$, then $ab \in k$. Now we wish to show that the inverse is 
 \varphi(a^{-1}) = \varphi(a)^{-1} \quad \textrm{by property of homomorphism}
 \]
 \[
-\varphi(a^{-1}) = {1_H}^{-1}
-\]
-\[
-\varphi(a^{-1}) \cdot 1_H = {1_H}^{-1} \cdot 1_H
-\]
-\[
-\varphi(a^{-1}) = 1_H
+\varphi(a^{-1}) = {1_H}^{-1} = 1_H
 \]
 Thus, since the kernel is non-empty and the product and inverse are closed in the kernel, the kernel is a subgroup of $G$.
 
@@ -89,29 +80,47 @@ Next, show that if the kernel is the identity subgroup, then $\varphi$ injective
 
 \section{DF 1.6 Exercise 24}
 \begin{proof}
-Let $\varphi: D_{2n} \rightarrow G$ where $r \mapsto xy, s \mapsto y$. Note that $D_{2n} = \langle r, s | r^n = s^2 = 1, rs=sr^{-1} \rangle$ and $G=\langle x,y | x^2 = y^2 = 1 \rangle$ and $|xy|=n$. Claim that $\varphi$ is a isomorphism.
+Let $\varphi: D_{2n} \rightarrow G$ where $r \mapsto xy, s \mapsto y$. Note that $D_{2n} = \langle r, s | r^n = s^2 = 1, rs=sr^{-1} \rangle$ and $x,y$ distinct elements that generate $G$ with order 2 and $|xy|=n$. Claim that $\varphi$ is a isomorphism.
 
 First, show that $\varphi$ is a homomorphism. Note that if $\varphi$ preserves the relations in the group presentation of $D_{2n}$, then $\varphi$ is a homomorphism. Let $t=xy$. Observe that because $x^2=y^2=1$, $x^{-1} = x$ and $y^{-1}=y$. Thus, $xyx=xy^{-1}x^{-1}$. If we substitute $t=xy$, we get $tx=xt^{-1}$. Thus, the relation $rs=sr^{-1}$ is preserved by $\varphi$ in $G$. By assumption, we know that $r^n=1$ is preserved in $G$ since $|xy|=n$ and $r \mapsto xy$. By definition of $y$, we know that the relation $s^2$ is preserved in $G$ because $y^2=1$ and $s \mapsto y$. Because the relations in the group presentation of $D_{2n}$ are preserved by $\varphi$ and all other relations can be derived from those, we know that $\varphi$ is a homomorphism.
 
-Next, we need to show that $\varphi$ is a bijection. Observe that $\varphi$ is surjective because $G$ is generated by $x$ and $y$, which are the images of $rs$ and $s$, respectively. Thus, all the elements of $G$ are products of $x$ and $y$ (and their inverses), and all such products are images of the corresponding products of $rs$ and $s$ in $D_{2n}$. \textbf{Show injective.}
+Next, we need to show that $\varphi$ is a bijection. 
+
+Observe that $\varphi$ is surjective because $G$ is generated by $x$ and $y$, which are the images of $rs$ and $s$, respectively. Thus, all the elements of $G$ are products of $x$ and $y$ (and their inverses), and all such products are images of the corresponding products of $rs$ and $s$ in $D_{2n}$.
+
+Now, I wish to show that $\varphi$ is injective. Let $a,b \in D_{2n}$.
+We can write $a=r^is^k$, $b=r^js^l$ where $k,l \in \{0, 1\}$ and $0 \leq i,j < n$. Assume that $\varphi(a)=\varphi(b)$. We can rewrite as $\varphi(r^is^k)=\varphi(r^js^l)$. 
+By property of homomorphism, this means $\varphi(r)^i\varphi(s)^k=\varphi(r)^j\varphi(s)^l \Rightarrow (xy)^i y^k = (xy)^j y^l$. After right multiplying by $y^{-l}$ and left multiplying by $(xy)^{-i}$, we get $y^{k-l}=(xy)^{j-i}$. Because of the restrictions on $k, l$, we end up with two cases: 1. $k-l=0$, 2. $k-l=\pm1$.
+In case 1, we have $1=(xy)^{j-i}$. The restrictions on $i, j$ mean that $-n < j-i < n$. Taken with the previous statement, we know that $j-i=0 \Rightarrow j=i$. From the case assumption, we have $k=l$. Thus, in this case, we have proved that $a=b$. Now, we need to show that the other case doesn't work. $k-l=\pm1 \Rightarrow y=(xy)^{j-i} \Rightarrow 1=y(xy)^{j-i}$. Left and right multiply both sides by $y$ to get $yy=1=x(yx)^{j-i-1}$. 
+Observe that we can keep doing this by left and right multiplying both sides by the flanking element. This reduces to a base case of $1=yxy$ or $1=xyx$, which will give you either $x=1$ or $y=1$. Note that you will always get this because you started with an odd length word of $x,y$ and you are canceling two items with each step. Thus, this is a contradiction because $x\neq y\neq 1$ because $|x|=|y|=2$ by assumption. Thus, this case is eliminated, and we have shown $\varphi$ injective and surjective, and thus bijective. Thus, there exists an isomorphism between $G$ and $D_{2n}$, and $G \cong D_{2n}$.
 \end{proof}
 
 \section{DF 1.7 Exercise 12}
 \begin{proof}
-Let $V = \{(v_1, v_2)...(v_{n-1}, v_{n})\}$ where we fix the vertices of the regular n-gon to be $v_i$ for $0 < i \leq n$. We claim that $D_{2n}$ acts on this set.
+Let $V = \{\{v_1, v_{n/2}\}...\{v_{j}, v_{j+n/2}\}...\{v_{n/2-1}, v_{n-1}\}\}$ where $0 < j \leq n/2$ where we fix the vertices of the regular n-gon to be $v_i$ for $0 < i \leq n$. We claim that $D_{2n}$ acts on this set.
+
+We wish to show that the map of the action is $D_{2n} \times V \rightarrow V$. It is sufficient to show that the image of the generators is in $V$ because all other elements in $D_{2n}$ are just products of generators and their inverses. Intuitively, any element in $D_{2n}$ is a rigid motion of an n-gon that does not change the structure of the n-gon, thus opposite vertices should still remain opposite vertices. More formally, we show that $r \cdot \{v_{j}, v_{j+n/2}\} = \{v_{j+1}, v_{j+n/2 + 1}\} \in V$ and $s \cdot \{v_{j}, v_{j+n/2}\} = \{v_{n-j+2}, v_{n-j-n/2+2}\}$ when $s$ is the reflection line going through $v_1, v_{n/2}$. Note that the latter image is also in $V$ because an element in $V$ can be written as $\{v_{i}, v_{i+n/2}\}$ and the image substitutes $i=n-j+2$.
 
 Let $a \in V$. Note that the identity in $D_{2n}$ is where we leave all vertices in the same position. Thus, $1 \cdot a = a$.
 
-\textbf{Finish}
+Now, we wish to show that $g_2(g_1a)=(g_2g_1)a$ for some $g_1, g_2 \in D_{2n}$. Note that the group operation in $D_{2n}$ is composition of functions. Thus, $(g_2g_1)a$ means you apply $g_1$ to $a$ first, and then you apply $g_2$ to the result. However, this is what is meant by $g_2(g_1a)$ because you are acting on $a$ with $g_1$ and then $g_2$. Thus, $g_2(g_1a)=(g_2g_1)a$.
 
-
+Now, we want to find the kernel of this action. The kernel is defined as $\{g\in D_{2n} | g \cdot v = v \quad \forall v \in V\}$. Let $v \in V$ s.t. $v=\{j, j+n\2\}$ for $0 < j < n/2$ (I am using the index instead of subscripting it on $v$ for brevity). Let $g = r^is^k \in D_{2n}$. We want to find $i, k$ s.t. $g \cdot v = v$. Take $r^is^k \cdot \{j, n/2 + j\}$. If $k = \pm 1$
+\[
+r^i \cdot \{n-j+2, n/2-j+2\} = \{n-j+i+2, n/2-j+i+2\}
+\]
+Since this must work for any $v$, assume that $j=1 \Rightarrow \{n+i+1, n/2+i+1\}$. Assuming $n+i+1=j \Rightarrow i=-n \Rightarrow 1-n/2 \neq j+n/2=1+n/2$. Assuming $n/2+i+1=j \Rightarrow i=-n/2 \Rightarrow n/2+1=j$. But this same action does not work on the neighbor vertex and it's opposite vertex (i.e. $r^{-n/2}s$ will not preserve $\{2, 2+n/2\}$ since it maps it to $\{n/2, n\}$). Thus, we rule out this case. The other case is if $k=0$
+\[
+r^i \cdot \{j, n/2 + j\} = \{j+i, n/2 + j + i\}
+\]
+Assume $j+i=j$. Thus, $i=0 \Rightarrow n/2+j+i=n/2+j$. Thus $e$ is in the kernel. Assume $j+i=n/2+j$. Thus, $i=n/2 \Rightarrow n/2+j+i=j+n=j$. Thus $r^{n/2}$ is in the kernel. We have exhausted our cases, so we know that the kernel of this action is $\{e, r^{n/2}\}$.
 \end{proof}
 
 \section{DF 1.7 Exercise 16}
 \begin{proof}
 First, show that $1 \cdot a = a$.
 \[
-1 \cdot a = 1 \cdot a \cdot 1^{-1}
+1 \cdot a = 1a1^{-1}
 \]
 \[
 1 \cdot a = a
@@ -119,8 +128,8 @@ First, show that $1 \cdot a = a$.
 
 Next, show that $g_2(g_1a)=(g_2g_1)a$.
 \[
-g_2(g_1a) = g_2(g_1ag_1^{-1}) = g_2 \cdot g_1ag_1^{-1} \cdot g_2^{-1} =
-(g_2g_1)a(g_2g_1)^{-1} = (g_2g_1)a
+g_2\cdot(g_1 \cdot a) = g_2\cdot(g_1ag_1^{-1}) = g_2(g_1ag_1^{-1}) g_2^{-1} =
+(g_2g_1)a(g_2g_1)^{-1} = (g_2g_1)\cdot a
 \]
 \end{proof}
 
@@ -131,12 +140,13 @@ Let $O_x = \{g \in G | g = hx, h \in H\}$. Show that $H \rightarrow O_x$, $h \ma
 h_1x \cdot x^{-1} = h_2x \cdot x^{-1} \Rightarrow h_1 = h_2
 \]
 Next, show surjection. Let $a \in O_x$. By definition, $a = hx$ for some $h \in H$. Thus, $a$ has preimage $h$. Since any element in $O_x$ has a preimage in $H$, this map is surjective. Because this map is surjective and injective, it is a bijection.
-\textbf{Deduce Lagrange}
+
+Now, we want to deduce Lagrange's Theorem. from the previous exercise (DF 1.7 Exercise 18), we know that if H is a group acting on set A, then the orbits under the action of H partition the set A. When we apply this to our problem, we get that the orbits under the action of H partition the set G. Thus, $|G|=\sum_{x\in A} |O_x|$ for some $A \subset G$. We know that there is a bijection between each orbit and H. Thus, we know $|O_x|=|H|$ for all $x\in G$. Since each orbit has the same order, namely $|H|$, we have $|G|=|A||H| \Rightarrow |H| | |G|$. 
 \end{proof}
 
 \section{DF 2.1 Exercise 6}
 \begin{proof}
-Let $G$ be an abelian group. Let $H=\{g \in G | |g| < \infty\}$. We want to show that $H$ is a subgroup of G.
+Let $G$ be an abelian group. Let $H=\{g \in G | |g| < \infty\}$. We want to show that $H$ is a subgroup of G. Note $H$ is a subset of $G$.
 
 $H$ is non-empty since $|1| = 1 < \infty \Rightarrow 1 \in H$.
 
@@ -169,11 +179,11 @@ Observe that when you perform the group operation on two elements of the direct 
 
 Thus, when finding torsion group, each element in each component needs to have finite order.
 
-For the first component, the subgroup with elements of finite order is $\{0\}$. This is because none of the other elements in $\mathbb{Z}$ have finite order. This is also closed under products and inverses because the identity is its own inverse and the product with itself is itself.
+For the first component, the subgroup with elements of finite order is $(\{0\}, +)$. This is because none of the other elements in $\mathbb{Z}$ have finite order. This is also closed under products and inverses because the identity is its own inverse and the product with itself is itself.
 
 For the second component, the subgroup with elements of finite order is $\mathbb{Z}/n\mathbb{Z}$. This is because all of the elements in $\mathbb{Z}/n\mathbb{Z}$ have finite order. This is closed under products and inverses because it is a group.
 
-Thus, the torsion group of the direct product is $\{0\} \times \mathbb{Z}/n\mathbb{Z}$. Each element in this torsion group should have the order corresponding to its second component, which will always be a finite order. This also contains all of the elements in the direct product with finite order because you can not increase the set that the first component comes from to more than \{0\}; otherwise it will not have finite order (e.g. (1, $b$) has infinite order regardless of $b$). You also can not increase the set the second component comes from because that is the whole set of possibilities as defined by the direct product.
+Thus, the torsion group of the direct product is $(\{0\},+) \times \mathbb{Z}/n\mathbb{Z}$. Each element in this torsion group should have the order corresponding to its second component, which will always be a finite order. This also contains all of the elements in the direct product with finite order because you can not increase the set that the first component comes from to more than \{0\}; otherwise it will not have finite order (e.g. (1, $b$) has infinite order regardless of $b$). You also can not increase the set the second component comes from because that is the whole set of possibilities as defined by the direct product.
 
 Now we want to show that the set of elements with infinite order together with the identity is not a subgroup of the direct product. Let this set be $A=\{x \in \mathbb{Z} \times \mathbb{Z}/n\mathbb{Z}\ | |x| = \infty \} \cup \{e\}$.
 
@@ -215,7 +225,7 @@ Since $k$ can only be 0 or 1, and since if $k=1$ you have $sr = rs$ (which is no
 \[
 gs=sg \Rightarrow r^is^ks=sr^is^k \Rightarrow r^is=sr^i
 \]
-Note that from the relations of $D_{2n}$, we also know that $r^is=sr^{-i}$. Thus, we have $sr^i=sr^{-i} \Rightarrow r^i=r^{-i} \Rightarrow r^{2i}=e \Rightarrow n|2i$. We know that $0\leq i < n$, so $i\neq n$. And we know n is odd, so $n$ can not divide 2 times a factor of $i$. Thus, $i=0$.
+Note that from the relations of $D_{2n}$, we also know that $r^is=sr^{-i}$. Thus, we have $sr^i=sr^{-i} \Rightarrow r^i=r^{-i} \Rightarrow r^{2i}=e \Rightarrow n|2i$. We know that $0\leq i < n$, so $n$ does not divide $i>0$. And we know n is odd, so $n$ can not divide 2. Thus, $i=0$.
 
 Thus, $g=r^is^k=r^0s^0=e$.
 \end{proof}
@@ -224,7 +234,7 @@ Thus, $g=r^is^k=r^0s^0=e$.
 Follow the steps from part a) up until $r^{2i} = e$. Note that the restriction on $n=2k$ instead of n being odd does not affect the proof up to there. 
 \[r^{2i} = e \Rightarrow n|2i \Rightarrow 2k|2i \Rightarrow k|i\]. 
 Thus, $i$ must be a multiple of $k$ within $[0, 2k)$. Thus, the only possible values for $i$ in this range are 0 and $k$. Thus, we get the center is $g=r^is^j$ where $i \in {0, k}$ and $j=0$ (Note: I change the power of $s$ to $j$ to avoid confusion with the introduction of $k$ by the problem).
-Thus, we have $Z(D_{2n})={1, r^k}$
+Thus, we have $Z(D_{2n})={e, r^k}$.
 \end{proof}
 
 \section{DF 2.2 Exercise 9}
@@ -234,24 +244,33 @@ Let $x \in N_G(A) \cap H$. This means that $x \in H$ and $xAx^{-1}=A$. Thus, $x 
 Now we show the other direction. Let $x \in N_H(A)$. This implies that $x \in H$ AND $xAx^{-1}=A$, which implies that $x \in N_G(A) \cap H$. Thus, $N_H(A) \subseteq N_G(A)\cap H$.
 
 Thus, $N_H(A) = N_G(A)\cap H$.
+
+Now, we wish to show that $N_H(A)$ is a subgroup of $H$. Observe that by definition the elements in $N_H(A)$ are in $H$, thus it is a subset. $1_HA(1_H)^{-1}=1_HA1_H=A \Rightarrow 1_H \in N_H(A)$. Thus, $N_H(A)$ is non-empty. Let $h_1, h_2 \in N_H(A)$. We wish to show $h_1h_2^{-1} \in N_H(A)$. 
+\[
+h_1h_2^{-1}A(h_1h_2^{-1})^{-1} = h_1h_2^{-1}Ah_2h_1^{-1}
+\]
+Since $h_2 \in N_H(A)$, $h_2Ah_2^{-1}=A \Rightarrow A=h_2^{-1}Ah_2$. Thus,
+\[
+h_1h_2^{-1}Ah_2h_1^{-1}=h_1Ah_1^{-1}=A \Rightarrow h_1h_2^{-1} \in N_H(A)
+\]
+Thus, $N_H(A)$ is a subgroup of $H$.
 \end{proof}
 
 \section{HP 1}
-\begin{proof}
 \[
-G_{\{1\}} = \{(23),(34),(24),(234),(324)\}
+G_{\{1\}} = \{e, (23),(34),(24),(234),(324)\}
 \]
 \[
 O_{\{1\}} = \{\{1\},\{2\},\{3\},\{4\}\}
 \]
 \[
-G_{\{1,2\}} = \{(12), (34)\}
+G_{\{1,2\}} = \{e, (12), (34)\}
 \]
 \[
 O_{\{1,2\}} = \{\{1,2\},\{1,3\},\{1,4\},\{2,3\},\{2,4\},\{3,4\}\}
 \]
 \[
-G_{\{1,2,3\}} = \{(123),(213)\}
+G_{\{1,2,3\}} = \{e, (12), (13), (23), (123),(213)\}
 \]
 \[
 O_{\{1,2,3\}} = \{\{1,2,3\},\{1,2,4\},\{1,3,4\},\{2,3,4\}\}
@@ -262,5 +281,4 @@ G_{\{1,2,3,4\}} = \{x|x \in S_4\}
 \[
 O_{\{1,2,3,4\}} = \{\{1,2,3,4\}\}
 \]
-\end{proof}
 \end{document}
